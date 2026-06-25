@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Crisve Travel. Viajes excepcionales a Marruecos, cruceros de autor y experiencias en grupo. Sin reservas online. Atención personalizada.">
+  <title>Crisve Travel — Slow Luxury</title>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+  font-family: 'Instrument Sans', sans-serif;
+  background: #ffffff;
+  color: #111111;
+  line-height: 1.4;
+  scroll-behavior: smooth;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:url('images/fondo/fondo1.jpg') center center no-repeat;
+  background-size:1600px;
+  opacity:0.22;
+  pointer-events:none;
+  z-index:0;
+}
+
+header, main, footer, .floating-buttons, .modal-overlay{
+  position:relative;
+  z-index:1;
+}
+    ::selection { background: #f0a34b; color: #000; }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
+    section { padding: 4rem 0; border-bottom: 1px solid #eaeaea; }
+    h1, h2, h3 { font-weight: 600; letter-spacing: -0.02em; }
+    h2 { font-size: 2.4rem; margin-bottom: 1rem; line-height: 1.2; }
+    .section-label { text-transform: uppercase; font-size: 0.75rem; letter-spacing: 3px; font-weight: 600; color: #d37e2c; margin-bottom: 0.8rem; display: inline-block; }
+    header { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.96); backdrop-filter: blur(8px); z-index: 1000; padding: 0.6rem 0; border-bottom: 1px solid #efefef; transition: 0.2s; }
+    .nav-container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .logo a { text-decoration: none; display: flex; align-items: center; gap: 0.6rem; }
+    .logo img { height: 38px; width: auto; display: block; }
+    .logo h1 { font-size: 1.3rem; font-weight: 650; letter-spacing: -0.5px; color: #1a2c2c; margin: 0; }
+    .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+    .nav-links a { text-decoration: none; font-weight: 500; color: #2c3e3e; font-size: 0.9rem; transition: 0.2s; }
+    .nav-links a:hover { color: #d37e2c; }
+    .menu-icon { display: none; font-size: 1.5rem; cursor: pointer; color: #1a2c2c; }
+    .hero { min-height: 80vh; display: flex; align-items: center; background: rgba(250,247,242,0.75); backdrop-filter: blur(1px); margin-top: 4rem; }
+    .hero-grid { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 2rem; }
+    .hero-text { flex: 1.2; }
+    .hero-text h1 { font-size: 3.2rem; line-height: 1.1; margin: 0.8rem 0 0.8rem; font-weight: 650; color: #1e2a2a; }
+    .hero-highlight { color: #d46b2e; border-bottom: 3px solid #f0a34b; display: inline-block; }
+    .hero-buttons { display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 0.75rem 1.6rem; border-radius: 0px; font-weight: 600; text-decoration: none; transition: 0.2s; border: none; cursor: pointer; font-size: 0.9rem; }
+    .btn-dark { background: #1e2a2a; color: white; }
+    .btn-dark:hover { background: #d37e2c; transform: translateY(-2px); }
+    .btn-outline { border: 1.5px solid #1e2a2a; background: transparent; color: #1e2a2a; }
+    .btn-outline:hover { background: #1e2a2a; color: white; }
+    .hero-media { flex: 1; background: #e5dfd5; height: 320px; background-image: url('https://images.pexels.com/photos/258117/pexels-photo-258117.jpeg?auto=compress&cs=tinysrgb&w=800'); background-size: cover; background-position: center; filter: grayscale(15%); min-height: 200px; }
+    .tabs-header { display: flex; flex-wrap: wrap; gap: 0.3rem; border-bottom: 2px solid #ece7e0; margin-bottom: 2rem; justify-content: flex-start; }
+    .tab-btn { background: transparent; border: none; padding: 0.8rem 1.2rem; font-size: 0.9rem; font-weight: 600; font-family: 'Instrument Sans', sans-serif; color: #5a6e6e; cursor: pointer; transition: 0.2s; position: relative; white-space: nowrap; }
+    .tab-btn:hover { color: #d37e2c; }
+    .tab-btn.active { color: #1e2a2a; }
+    .tab-btn.active::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 100%; height: 2px; background: #d37e2c; }
+    .tab-pane { display: none; animation: fadeIn 0.3s ease; }
+    .tab-pane.active-pane { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px);} to { opacity: 1; transform: translateY(0);} }
+    .categoria-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
+    .travel-card { background: #ffffff; border: 1px solid #ece7e0; transition: 0.25s; overflow: hidden; }
+    .travel-card:hover { border-color: #d37e2c; transform: translateY(-5px); box-shadow: 0 12px 20px -12px rgba(0,0,0,0.08); }
+    .card-img { height: 200px; background-size: cover; background-position: center; background-repeat: no-repeat; }
+    .card-content { padding: 1.4rem; }
+    .card-content h3 { font-size: 1.3rem; margin-bottom: 0.3rem; }
+    .card-content p { color: #4a5b5b; margin-bottom: 0.8rem; font-size: 0.9rem; line-height: 1.4; }
+    .badge-days { background: #f0ede8; display: inline-block; padding: 0.2rem 0.8rem; font-size: 0.7rem; font-weight: 600; margin-bottom: 0.8rem; letter-spacing: 0.3px; }
+    .btn-small { background: transparent; border: 1px solid #1e2a2a; padding: 0.4rem 1rem; font-weight: 600; text-decoration: none; color: #1e2a2a; font-size: 0.8rem; display: inline-flex; align-items: center; gap: 6px; transition: 0.2s; cursor: pointer; }
+    .btn-small:hover { background: #1e2a2a; color: white; border-color: #1e2a2a; }
+    .about-grid, .testimonial-grid, .contact-flex { display: flex; gap: 2rem; flex-wrap: wrap; }
+    .about-text, .about-stat, .testimonial, .contact-info { flex: 1; min-width: 260px; }
+    .about-stat, .testimonial, .contact-flex { background: #f8f5f0; padding: 1.8rem; }
+    
+    /* BOTONES FLOTANTES LATERALES */
+    .floating-buttons {
+      position: fixed;
+      bottom: 24px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 99;
+    }
+    .float-btn {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.4rem;
+      transition: 0.2s;
+      text-decoration: none;
+      border-radius: 50%;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+    .float-btn:hover { transform: scale(1.05); }
+    .btn-float-instagram { background: linear-gradient(45deg, #f09433, #d62976, #962fbf, #4f5bd5); }
+    .btn-float-instagram:hover { background: linear-gradient(45deg, #d47a2e, #b81c65, #7a1f9e, #3a47b5); }
+    .btn-float-whatsapp { background: #25D366; }
+    .btn-float-whatsapp:hover { background: #128C7E; }
+    
+    footer { background: #111; color: #e2e2e2; padding: 2.5rem 0; text-align: center; }
+    .social-icons a { color: #bbb; margin: 0 0.6rem; font-size: 1.2rem; transition: 0.2s; display: inline-block; }
+    .social-icons a:hover { color: #d37e2c; transform: translateY(-2px); }
+    .btn-instagram { background: linear-gradient(45deg, #f09433, #d62976, #962fbf, #4f5bd5); color: white; border: none; display: inline-flex; align-items: center; gap: 10px; padding: 0.75rem 1.6rem; font-weight: 600; text-decoration: none; transition: 0.2s; font-size: 0.9rem; width: 100%; justify-content: center; }
+    .btn-instagram:hover { background: linear-gradient(45deg, #d47a2e, #b81c65, #7a1f9e, #3a47b5); transform: translateY(-2px); }
+    .btn-whatsapp-contact { background: #25D366; color: white; border: none; display: inline-flex; align-items: center; gap: 10px; padding: 0.75rem 1.6rem; font-weight: 600; text-decoration: none; transition: 0.2s; font-size: 0.9rem; width: 100%; justify-content: center; }
+    .btn-whatsapp-contact:hover { background: #128C7E; transform: translateY(-2px); }
+    .botones-contacto { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
+
+    .more-destinations {
+      margin-top: 1.5rem;
+      padding: 1.2rem;
+      background: #f8f5f0;
+      text-align: center;
+      border-radius: 4px;
+      border: 1px dashed #d37e2c;
+    }
+    .more-destinations p {
+      color: #4a5b5b;
+      font-size: 0.95rem;
+      margin: 0;
+    }
+    .more-destinations strong {
+      color: #d37e2c;
+      font-weight: 600;
+    }
+    .more-destinations a {
+      color: #1e2a2a;
+      font-weight: 600;
+      text-decoration: underline;
+      transition: 0.2s;
+    }
+    .more-destinations a:hover {
+      color: #d37e2c;
+    }
+
+    /* MODAL / POPUP */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(4px);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .modal-overlay.active {
+      display: flex;
+    }
+    .modal {
+      background: #ffffff;
+      max-width: 480px;
+      width: 100%;
+      padding: 2rem 1.5rem;
+      border-radius: 8px;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      animation: modalIn 0.3s ease;
+    }
+    @keyframes modalIn {
+      from { opacity: 0; transform: scale(0.95) translateY(20px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 14px;
+      font-size: 1.6rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #999;
+      transition: 0.2s;
+    }
+    .modal-close:hover {
+      color: #d37e2c;
+      transform: rotate(90deg);
+    }
+    .modal h2 {
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+    }
+    .modal p {
+      color: #4a5b5b;
+      margin-bottom: 1rem;
+    }
+    .modal .botones-contacto {
+      margin-top: 0;
+    }
+    .modal .btn-instagram,
+    .modal .btn-whatsapp-contact {
+      width: 100%;
+    }
+    .modal .section-label {
+      margin-bottom: 0.2rem;
+    }
+
+    /* NUEVA SECCIÓN QUIEN SOY - SOY VERÓNICA */
+    .quien-soy-grid {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2.5rem;
+      margin-top: 1rem;
+    }
+    .quien-soy-text {
+      flex: 1.2;
+      min-width: 280px;
+    }
+    .quien-soy-text p {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: #1e2a2a;
+      margin-bottom: 1.2rem;
+    }
+    .quien-soy-text .destacado {
+      font-weight: 500;
+      color: #d37e2c;
+      font-size: 1.05rem;
+    }
+    .quien-soy-fotos {
+      flex: 0.8;
+      min-width: 200px;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    .quien-soy-fotos .foto {
+      width: 100%;
+      aspect-ratio: 1/1;
+      background-size: cover;
+      background-position: center;
+      border-radius: 4px;
+      filter: grayscale(20%);
+      transition: 0.3s;
+      border: 1px solid #ece7e0;
+    }
+    .quien-soy-fotos .foto:hover {
+      filter: grayscale(0%);
+      transform: scale(1.02);
+      box-shadow: 0 10px 20px -10px rgba(0,0,0,0.1);
+    }
+    .foto-perfil {
+      background-image: url('images/quiensoy/soy1.jpg');
+    }
+    .foto-viaje {
+      background-image: url('images/quiensoy/soy2.jpg');
+    }
+    .quien-soy-fotos .foto:last-child {
+      aspect-ratio: 4/3;
+    }
+
+    @media (max-width: 768px) {
+      .container { padding: 0 1.2rem; }
+      .hero-text h1 { font-size: 2.2rem; }
+      .hero-media { height: 220px; }
+      .tabs-header { overflow-x: auto; flex-wrap: nowrap; padding-bottom: 0.5rem; gap: 0.2rem; }
+      .tab-btn { padding: 0.6rem 1rem; font-size: 0.8rem; white-space: nowrap; }
+      .nav-links { 
+        position: fixed; 
+        top: 68px; 
+        left: -100%; 
+        background: white; 
+        width: 80%; 
+        height: 100vh; 
+        flex-direction: column; 
+        align-items: center; 
+        padding-top: 2.5rem; 
+        transition: 0.3s; 
+        box-shadow: 2px 0 10px rgba(0,0,0,0.05); 
+        z-index: 999; 
+        gap: 1.5rem;
+      }
+      .nav-links.active { left: 0; }
+      .menu-icon { display: block; }
+      section { padding: 3rem 0; }
+      .logo img { height: 32px; }
+      .logo h1 { font-size: 1.1rem; }
+      .floating-buttons { bottom: 18px; right: 16px; gap: 8px; }
+      .float-btn { width: 44px; height: 44px; font-size: 1.2rem; }
+      .modal { padding: 1.8rem 1.2rem; }
+      .modal h2 { font-size: 1.4rem; }
+      h2 { font-size: 2rem; }
+      .about-stat, .testimonial, .contact-flex { padding: 1.5rem; }
+      .hero { min-height: 70vh; margin-top: 3.5rem; }
+      .quien-soy-fotos {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .quien-soy-fotos .foto {
+        flex: 1 1 120px;
+        max-width: 180px;
+        aspect-ratio: 1/1;
+      }
+      .quien-soy-fotos .foto:last-child {
+        aspect-ratio: 1/1;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-text h1 { font-size: 1.8rem; }
+      .btn { padding: 0.6rem 1.2rem; font-size: 0.8rem; }
+      .categoria-grid { grid-template-columns: 1fr; }
+      .card-img { height: 180px; }
+      .container { padding: 0 1rem; }
+      .hero-media { height: 180px; }
+      .hero-grid { gap: 1.5rem; }
+      .tab-btn { padding: 0.5rem 0.8rem; font-size: 0.75rem; }
+      .logo h1 { font-size: 1rem; }
+      .logo img { height: 28px; }
+      .quien-soy-fotos .foto {
+        flex: 1 1 100px;
+        max-width: 140px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav-container">
+    <div class="logo">
+      <a href="#inicio">
+        <img src="images/logo/logo.jpg" alt="Crisve Travel Logo">
+        <h1>Crisve Travel</h1>
+      </a>
+    </div>
+    <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#quien-soy">Quién soy</a></li>
+      <li><a href="#viajes-destacados">Viajes</a></li>
+      <li><a href="#testimonios">Voces</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+  <section id="inicio" class="hero">
+    <div class="container hero-grid">
+      <div class="hero-text">
+        <span class="section-label">slow luxury · since 2018</span>
+        <h1>Descubre el mundo con<br><span class="hero-highlight">Crisve Travel</span></h1>
+        <p style="font-size: 1rem; max-width: 500px; margin-top: 0.3rem; color: #3f4e4e;">Viajes a Marruecos, cruceros de autor y experiencias en grupo. Sin reservas online, solo atención humana y diseño a medida.</p>
+        <div class="hero-buttons">
+          <a href="https://wa.me/34663584491?text=Hola%20Crisve%20Travel%2C%20quiero%20empezar%20mi%20viaje" class="btn btn-dark" target="_blank"><i class="fab fa-whatsapp"></i> Contactar por WhatsApp</a>
+          <a href="#contacto" class="btn btn-outline">Solicitar información →</a>
+        </div>
+      </div>
+      <div class="hero-media"></div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN QUIÉN SOY - SOY VERÓNICA -->
+  <section id="quien-soy" style="background: rgba(252,250,247,0.75);">
+    <div class="container">
+      <span class="section-label">quién soy</span>
+      <h2 style="font-size: 2.8rem;">Soy Verónica</h2>
+      <div class="quien-soy-grid">
+        <div class="quien-soy-text">
+          <p>La persona que está detrás de esta agencia, de las redes sociales y de cada viaje que organizo. Mi pasión por descubrir el mundo me llevó a crear este proyecto con un objetivo muy claro: <strong>ayudarte a vivir experiencias únicas y crear recuerdos inolvidables</strong>. Porque cada persona es diferente, cada viaje también debería serlo.</p>
+          <p>Por eso, diseño viajes totalmente personalizados, adaptados a tus gustos, tu ritmo, tus necesidades y tus sueños. Ya sea una escapada romántica, unas vacaciones en familia, una aventura al otro lado del mundo o ese destino que llevas años imaginando, <strong>estoy aquí para ayudarte a hacerlo realidad</strong>.</p>
+          <p>Además, también organizo viajes en grupo, pensados para compartir experiencias, conocer gente nueva y disfrutar de destinos increíbles en compañía. Son viajes llenos de momentos especiales, risas, descubrimientos y conexiones que muchas veces se convierten en amistades para toda la vida.</p>
+          <p>Cuando contactas con esta agencia, <strong>hablas directamente conmigo</strong>. No encontrarás respuestas impersonales ni procesos complicados. Encontrarás a una persona que te escucha, te aconseja y te acompaña antes, durante y después de tu viaje.</p>
+          <p>Porque viajar no es solo llegar a un destino. Es emocionarse al planearlo, disfrutar cada momento y regresar con historias que recordar para siempre.</p>
+          <p class="destacado">Gracias por estar aquí. Será un placer ayudarte a descubrir tu próxima aventura. ✈️🌍✨</p>
+        </div>
+        <div class="quien-soy-fotos">
+          <div class="foto foto-perfil" title="Verónica, fundadora de Crisve Travel"></div>
+          <div class="foto foto-viaje" title="Un momento de viaje"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="viajes-destacados" style="background: rgba(255,255,255,0.75);">
+    <div class="container">
+      <span class="section-label">elige tu experiencia</span>
+      <h2>Viajes diseñados para ti</h2>
+      <div class="tabs-header">
+        <button class="tab-btn active" data-tab="marruecos">🇲🇦 Marruecos</button>
+        <button class="tab-btn" data-tab="cruceros">🚢 Cruceros</button>
+        <button class="tab-btn" data-tab="espana">🇪🇸 España</button>
+        <button class="tab-btn" data-tab="europa">🇪🇺 Europa</button>
+        <button class="tab-btn" data-tab="escapadas">⚡ Escapadas</button>
+        <button class="tab-btn" data-tab="grupo">👥 Grupo</button>
+        <button class="tab-btn" data-tab="excursiones">🗺️ Excursiones</button>
+      </div>
+
+      <!-- MARRUECOS -->
+      <div id="marruecos" class="tab-pane active-pane">
+        <div class="categoria-grid">
+          <div class="travel-card"><div class="card-img" style="background-image: url('images/marruecos/viaje1.jpg');"></div><div class="card-content"><h3>Marruecos Esencial</h3><p>Marrakech, desierto de Merzouga y kasbahs.</p><span class="badge-days">Consultar días</span><div><a href="#" class="btn-small open-modal">Saber más <i class="fas fa-arrow-right"></i></a></div></div></div>
+          <div class="travel-card"><div class="card-img" style="background-image: url('images/marruecos/viaje2.jpg');"></div><div class="card-content"><h3>Fez y Chefchaouen</h3><p>Cultura y montañas azules.</p><span class="badge-days">Consultar días</span><div><a href="#" class="btn-small open-modal">Saber más <i class="fas fa-arrow-right"></i></a></div></div></div>
+          <div class="travel-card"><div class="card-img" style="background-image: url('images/marruecos/desde-marrakech.jpg');"></div><div class="card-content"><h3>Desde Marrakech</h3><p>Rutas al Sáhara, a Fez y al Atlas desde la ciudad roja.</p><span class="badge-days">3 – 8 días</span><div><a href="#" class="btn-small open-modal">Saber más <i class="fas fa-arrow-right"></i></a></div></div></div>
+          <div class="travel-card"><div class="card-img" style="background-image: url('images/marruecos/desde-fez.jpg');"></div><div class="card-content"><h3>Desde Fez</h3><p>Desierto de Merzouga, Boumalne Dadès y la ruta imperial.</p><span class="badge-days">2 – 4 días</span><div><a href="#" class="btn-small open-modal">Saber más <i class="fas fa-arrow-right"></i></a></div></div></div>
+          <div class="travel-card"><div class="card-img" style="background-image: url('images/marruecos/desde-casablanca.jpg');"></div><div class="card-content"><h3>Desde Casablanca</h3><p>Circuitos por las ciudades imperiales hasta Marrakech.</p><span class="badge-days">4 – 16 días</span><div><a href="#" class="btn-small open-modal">Saber más <i class="fas fa-arrow-right"></i></a></div></div></div>
+          <div class="travel-card"><div class="card-img" style="background-image: url('images/marruecos/desde-tanger.jpg');"></div><div class="card-content"><h3>Desde Tánger</h3><p>Chefchaouen, ciudades imperiales y desierto del Sáhara.</p><span class="badge-days">4 – 10 días</span><div><a href="#" class="btn-small open-modal">Saber más <i class="fas fa-arrow-right"></i></a></div></div></div>
+          <div class="travel-card"><div class="card-img" style="background-image: url('images/marruecos/desde-agadir.jpg');"></div><div class="card-content"><h3>Desde Agadir</h3><p>Costa atlántica, desierto y pueblos bereberes.</p><span class="badge-days">6 – 13 días</span><div><a href="#" class="btn-small open-modal">Saber más <i class="fas fa-arrow-right"></i></a></div></div></div>
+        </div>
+        <div class="more-destinations">
+          <p>🌍 ¿Buscas otro destino en Marruecos? <strong>Tenemos muchas más rutas</strong> — <a href="#contacto">contáctanos y descúbrelas</a>.</p>
+        </div>
+      </div>
+
+      <!-- CRUCEROS -->
+      <div id="cruceros" class="tab-pane">
+        <div class="categoria-grid">
+          <div class="travel-card"><div class="card-img" style="background-image: url('images/cruceros/viaje1.jpg');"></div><div class="card-content"><h3>Europa</h3><p>Cruceros con destinos europeos.</p><span class="badge-days">Consultar días</span><div><a href="#" class="btn-small open-modal">Saber más <i class="fas fa-arrow-right"></i></a></div></div></div>
+          <div class="travel-card"><div class="card-img" style="background-image: url('images/cruceros/viaje2.jpg');"></div><div class="card-content"><h3>Noruega y Fiordos</h3><p>Crucero de autor, auroras boreales.</p><span class="badge-days">Consultar días</span><div><a href="#" class="btn-small open-modal">Saber más <i class="fas fa-arrow-right"></i></a></div></div></div>
+          <div class="travel-card"><div class="card-img" style="background-image: url('images/cruceros/viaje3.jpg');"></div><div class="card-content"><h3>Caribe Exclusivo</h3><p>Navegación privada, paradas secretas.</p><span class="badge-days">Consultar días</span><div><a href="#" class="btn-small open-modal">Saber más <i class="fas fa-arrow-right"></i></a></div></div></div>
+          <div class="travel-card"><div class="card-img" style="background-image: url('images/cruceros/viaje4.jpg');"></div><div class="card-content"><h3>Turquía e Islas Griegas</h3><p>Crucero por la costa turca y las islas griegas.</p><span class="badge-days">Consultar días</span><div><a href="#" class="btn-small open-modal">Saber más <i class="fas fa-arrow-right"></i></a></div></div></div>
+        </div>
+        <div class="more-destinations">
+          <p>🚢 ¿Te gustaría otro itinerario? <strong>Disponemos de más cruceros exclusivos</strong> — <a href="#contacto">consúltanos sin compromiso</a>.</p>
+        </div>
+      </div>
+
+      <!-- ESPAÑA -->
+      <div id="espana" class="tab-pane">
+        <div class="categoria-grid">
+          <div class="travel-card"><div class="card-img" style="background-image: url('images/espana/viaje1.jpg');"></div><div class="card-content"><h3>Andalucía Esencial</h3><p>Sevilla, Córdoba, Granada.</p><span class="badge-days">Consultar días</span><div><a href="#" class="btn-small open-modal">Saber más <i class="fas fa-arrow-right"></i></a></div></div></div>
+          <div class="travel-card"><div class="card-img" style="background-image: url('images/espana/viaje2.jpg');"></div><div class="card-content"><h3>Ruta del Norte</h3><p>San Sebastián, Bilbao, Asturias.</p><span class="badge-days">Consultar días</span><div><a href="#" class="btn-small open-modal">Saber más <i class="fas fa-arrow-right"></i></a></div></div></div>
+          <div class="travel-card"><div class="card-img" style="background-image: url('images/espana/viaje3.jpg');"></div><div class="card-content"><h3>Islas Baleares</h3><p>Mallorca, Menorca, velero.</p><span class="badge-days">Consultar días</span><div><a href="#" class="btn-small open-modal">Saber más <i class="fas fa-arrow-right"></i></a></div></div></div>
+        </div>
+        <div class="more-destinations">
+          <p>🇪🇸 ¿Quieres recorrer otros rincones de España? <strong>Tenemos rutas personalizadas</strong> — <a href="#contacto">háblanos y te asesoramos</a>.</p>
+        </div>
+      </div>
+
+      <!-- EUROPA -->
+      <div id="europa" class="tab-pane">
+        <div class="categoria-grid">
+          <div class="travel-card"><div class="card-img" style="background-image: url('images/europa/viaje1.jpg');"></div><div class="card-content"><h3>Parte de Italia</h3><p>Roma, Bari, Palermo, Milán, Venecia.</p><span class="badge-days">Consultar días</span><div><a href="#" class="btn-small open-modal">Saber más <i class="fas fa-arrow-right"></i></a></div></div></div>
+          <div class="travel-card"><div class="card-img" style="background-image: url('images/europa/viaje2.jpg');"></div><div class="card-content"><h3>Albania</h3><p>El sureste de la península balcánica.</p><span class="badge-days">Consultar días</span><div><a href="#" class="btn-small open-modal">Saber más <i class="fas fa-arrow-right"></i></a></div></div></div>
+          <div class="travel-card"><div class="card-img" style="background-image: url('images/europa/viaje3.jpg');"></div><div class="card-content"><h3>Turquía</h3><p>Estambul, Ankara, Antalya...</p><span class="badge-days">Consultar días</span><div><a href="#" class="btn-small open-modal">Saber más <i class="fas fa-arrow-right"></i></a></div></div></div>
+          <div class="travel-card"><div class="card-img" style="background-image: url('images/europa/viaje4.jpg');"></div><div class="card-content"><h3>Londres Esencial</h3><p>Historia, cultura y modernidad.</p><span class="badge-days">Consultar días</span><div><a href="#" class="btn-small open-modal">Saber más <i class="fas fa-arrow-right"></i></a></div></div></div>
+        </div>
+        <div class="more-destinations">
+          <p>🇪🇺 Europa es enorme y tenemos muchos más destinos. <strong>Pregúntanos por tu ciudad ideal</strong> — <a href="#contacto">te la diseñamos</a>.</p>
+        </div>
+      </div>
+
+      <!-- ESCAPADAS -->
+      <div id="escapadas" class="tab-pane">
+        <div class="categoria-grid">
+          <div class="travel-card"><div class="card-img" style="background-image: url('images/escapadas/viaje1.jpg');"></div><div class="card-content"><h3>París exprés</h3><p>3 días de romanticismo.</p><span class="badge-days">Consultar días</span><div><a href="#" class="btn-small open-modal">Saber más <i class="fas fa-arrow-right"></i></a></div></div></div>
+          <div class="travel-card"><div class="card-img" style="background-image: url('images/escapadas/viaje2.jpg');"></div><div class="card-content"><h3>Tanger</h3><p>Quads y desierto.</p><span class="badge-days">Consultar días</span><div><a href="#" class="btn-small open-modal">Saber más <i class="fas fa-arrow-right"></i></a></div></div></div>
+          <div class="travel-card"><div class="card-img" style="background-image: url('images/escapadas/viaje3.jpg');"></div><div class="card-content"><h3>Ibiza</h3><p>Recorrido rápido pero profundo.</p><span class="badge-days">Consultar días</span><div><a href="#" class="btn-small open-modal">Saber más <i class="fas fa-arrow-right"></i></a></div></div></div>
+        </div>
+        <div class="more-destinations">
+          <p>⚡ ¿Buscas una escapada diferente? <strong>Tenemos más opciones exprés</strong> — <a href="#contacto">descúbrelas con nosotros</a>.</p>
+        </div>
+      </div>
+
+      <!-- GRUPO -->
+      <div id="grupo" class="tab-pane">
+        <div class="categoria-grid">
+          <div class="travel-card"><div class="card-img" style="background-image: url('images/grupo/viaje1.jpg');"></div><div class="card-content"><h3>Roma en Grupo</h3><p>Viaja por Europa en grupo.</p><span class="badge-days">Consultar días</span><div><a href="#" class="btn-small open-modal">Saber más <i class="fas fa-arrow-right"></i></a></div></div></div>
+          <div class="travel-card"><div class="card-img" style="background-image: url('images/grupo/viaje2.jpg');"></div><div class="card-content"><h3>Grupo familiar: Marruecos</h3><p>Ritmo adaptado.</p><span class="badge-days">Consultar días</span><div><a href="#" class="btn-small open-modal">Saber más <i class="fas fa-arrow-right"></i></a></div></div></div>
+          <div class="travel-card"><div class="card-img" style="background-image: url('images/grupo/viaje3.jpg');"></div><div class="card-content"><h3>Viaje de empresa</h3><p>Team building o crucero.</p><span class="badge-days">Consultar días</span><div><a href="#" class="btn-small open-modal">Saber más <i class="fas fa-arrow-right"></i></a></div></div></div>
+        </div>
+        <div class="more-destinations">
+          <p>👥 ¿Viajas con un grupo especial? <strong>Organizamos viajes para todo tipo de grupos</strong> — <a href="#contacto">cuéntanos tu idea</a>.</p>
+        </div>
+      </div>
+
+      <!-- EXCURSIONES DE UN DÍA -->
+      <div id="excursiones" class="tab-pane">
+        <div class="categoria-grid">
+          <div class="travel-card"><div class="card-img" style="background-image: url('images/excursiones/ouzoud.jpg');"></div><div class="card-content"><h3>Cascadas de Ouzoud</h3><p>Las cascadas más espectaculares de Marruecos, desde Marrakech.</p><span class="badge-days">1 día</span><div><a href="#" class="btn-small open-modal">Saber más <i class="fas fa-arrow-right"></i></a></div></div></div>
+          <div class="travel-card"><div class="card-img" style="background-image: url('images/excursiones/chefchaouen.jpg');"></div><div class="card-content"><h3>Chefchaouen</h3><p>La ciudad azul del Rif, desde Fez.</p><span class="badge-days">1 día</span><div><a href="#" class="btn-small open-modal">Saber más <i class="fas fa-arrow-right"></i></a></div></div></div>
+          <div class="travel-card"><div class="card-img" style="background-image: url('images/excursiones/essaouira.jpg');"></div><div class="card-content"><h3>Essaouira</h3><p>Ciudad costera amurallada con encanto bohemio, desde Marrakech.</p><span class="badge-days">1 día</span><div><a href="#" class="btn-small open-modal">Saber más <i class="fas fa-arrow-right"></i></a></div></div></div>
+          <div class="travel-card"><div class="card-img" style="background-image: url('images/excursiones/atlas.jpg');"></div><div class="card-content"><h3>Atlas Medio</h3><p>Pueblos bereberes, cedros y monos de Berbería, desde Fez.</p><span class="badge-days">1 día</span><div><a href="#" class="btn-small open-modal">Saber más <i class="fas fa-arrow-right"></i></a></div></div></div>
+          <div class="travel-card"><div class="card-img" style="background-image: url('images/excursiones/ait-ben-haddou.jpg');"></div><div class="card-content"><h3>Aït Ben Haddou</h3><p>Ksar patrimonio de la UNESCO, desde Marrakech.</p><span class="badge-days">1 día</span><div><a href="#" class="btn-small open-modal">Saber más <i class="fas fa-arrow-right"></i></a></div></div></div>
+          <div class="travel-card"><div class="card-img" style="background-image: url('images/excursiones/volubilis.jpg');"></div><div class="card-content"><h3>Volubilis y Meknes</h3><p>Ruinas romanas y ciudad imperial, desde Fez.</p><span class="badge-days">1 día</span><div><a href="#" class="btn-small open-modal">Saber más <i class="fas fa-arrow-right"></i></a></div></div></div>
+          <div class="travel-card"><div class="card-img" style="background-image: url('images/excursiones/ourika.jpg');"></div><div class="card-content"><h3>Valle de Ourika</h3><p>Cascadas y mercado bereber en el Alto Atlas, desde Marrakech.</p><span class="badge-days">1 día</span><div><a href="#" class="btn-small open-modal">Saber más <i class="fas fa-arrow-right"></i></a></div></div></div>
+          <div class="travel-card"><div class="card-img" style="background-image: url('images/excursiones/zagora.jpg');"></div><div class="card-content"><h3>Zagora y Desierto Tinfou</h3><p>Dunas del Sáhara y palmerales del valle del Draa, desde Ouarzazate.</p><span class="badge-days">1 día</span><div><a href="#" class="btn-small open-modal">Saber más <i class="fas fa-arrow-right"></i></a></div></div></div>
+        </div>
+        <div class="more-destinations">
+          <p>🗺️ ¿Buscas otra excursión? <strong>Organizamos salidas a medida</strong> — <a href="#contacto">consúltanos sin compromiso</a>.</p>
+        </div>
+      </div>
+
+      <div style="margin-top: 2rem; text-align: center; border-top: 1px solid #ece7e0; padding-top: 1.8rem;">
+        <p style="color:#4a5b5b">¿Ninguna opción se ajusta? <strong style="color:#d37e2c">Creamos tu viaje 100% a medida</strong> — sin coste extra.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="sobre">
+    <div class="container about-grid">
+      <div class="about-text">
+        <span class="section-label">quienes somos</span>
+        <h2>Expertos en experiencias auténticas</h2>
+        <p style="font-size: 1rem; max-width: 550px;">Especializados en Marruecos, cruceros de lujo y viajes organizados en grupo. Atención personalizada desde el primer mensaje.</p>
+        <div style="display: flex; gap: 2rem; margin-top: 1.5rem;"><div><strong>+8 años</strong><br>diseñando viajes</div><div><strong>100%</strong><br>a medida</div></div>
+      </div>
+      <div class="about-stat">
+        <i class="fas fa-hand-sparkles" style="font-size: 2rem; color: #d37e2c;"></i>
+        <h3 style="margin-top: 0.5rem;">sin reservas online</h3>
+        <p style="font-size: 0.9rem;">Hablamos, escuchamos y diseñamos. La tecnología es solo un medio.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonios" style="background: #fefcf8;">
+    <div class="container">
+      <span class="section-label">testimonios</span>
+      <h2>Lo que dicen</h2>
+      <div class="testimonial-grid">
+        <div class="testimonial"><i class="fas fa-quote-left" style="color: #d37e2c;"></i><p style="margin: 1rem 0;">"El viaje a Marrakech fue impecable. Crisve Travel entendió lo que buscábamos."</p><strong>— Mariana L.</strong><div>⭐⭐⭐⭐⭐</div></div>
+        <div class="testimonial"><i class="fas fa-quote-left" style="color: #d37e2c;"></i><p>"Crucero soñado, organización perfecta."</p><strong>— Carlos & Raquel</strong><div>⭐⭐⭐⭐⭐</div></div>
+        <div class="testimonial"><i class="fas fa-quote-left" style="color: #d37e2c;"></i><p>"Viaje grupal por Marruecos, todo fluyó sin contratiempos."</p><strong>— Javier S.</strong><div>⭐⭐⭐⭐⭐</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="container contact-flex">
+      <div class="contact-info">
+        <span class="section-label">conecta</span>
+        <h2 style="font-size: 2rem;">Hablemos de tu viaje</h2>
+        <p style="margin: 1rem 0;"><i class="far fa-envelope"></i> <strong>Email:</strong><br> <a href="mailto:Crisvetravel@hotmail.com?subject=Consulta%20Crisve%20Travel&body=Hola,%20me%20gustaría%20información" style="color: #d37e2c;">Crisvetravel@hotmail.com</a></p>
+        
+        <div class="botones-contacto">
+          <a href="https://www.instagram.com/crisvetravel" target="_blank" class="btn-instagram">
+            <i class="fab fa-instagram"></i> Síguenos en Instagram
+          </a>
+          <a href="https://wa.me/34663584491?text=Hola%20Crisve%20Travel%2C%20me%20interesa%20un%20viaje" target="_blank" class="btn-whatsapp-contact">
+            <i class="fab fa-whatsapp"></i> Escríbenos por WhatsApp
+          </a>
+        </div>
+        
+        <div style="margin-top: 1.5rem;"><i class="fas fa-clock"></i> Respuesta rápida, siempre personal.</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <h3>Crisve Travel</h3>
+    <p style="margin: 0.5rem 0 1rem;">Viajes que merecen ser vividos</p>
+    <div class="social-icons">
+      <a href="https://www.instagram.com/crisvetravel" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="mailto:Crisvetravel@hotmail.com"><i class="far fa-envelope"></i></a>
+      <a href="https://wa.me/34663584491?text=Hola%20Crisve%20Travel" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    </div>
+    <p style="font-size: 0.7rem; margin-top: 1.5rem;">© 2026 — Crisve Travel · Agencia de viajes personalizada</p>
+  </div>
+</footer>
+
+<!-- BOTONES FLOTANTES LATERALES -->
+<div class="floating-buttons">
+  <a href="https://www.instagram.com/crisvetravel" target="_blank" class="float-btn btn-float-instagram">
+    <i class="fab fa-instagram"></i>
+  </a>
+  <a href="https://wa.me/34663584491?text=Hola%20Crisve%20Travel%2C%20me%20interesa%20un%20viaje%20a%20medida" target="_blank" class="float-btn btn-float-whatsapp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+</div>
+
+<!-- MODAL / POPUP DE CONTACTO -->
+<div class="modal-overlay" id="contactModal">
+  <div class="modal">
+    <button class="modal-close" id="closeModal">&times;</button>
+    <span class="section-label">conecta</span>
+    <h2>Hablemos de tu viaje</h2>
+    <p>Déjanos saber qué viaje te interesa y te responderemos con una propuesta personalizada.</p>
+    <p style="margin: 1rem 0;"><i class="far fa-envelope"></i> <strong>Email:</strong><br> <a href="mailto:Crisvetravel@hotmail.com?subject=Consulta%20Crisve%20Travel&body=Hola,%20me%20gustaría%20información" style="color: #d37e2c;">Crisvetravel@hotmail.com</a></p>
+    <div class="botones-contacto">
+      <a href="https://www.instagram.com/crisvetravel" target="_blank" class="btn-instagram">
+        <i class="fab fa-instagram"></i> Síguenos en Instagram
+      </a>
+      <a href="https://wa.me/34663584491?text=Hola%20Crisve%20Travel%2C%20me%20interesa%20un%20viaje" target="_blank" class="btn-whatsapp-contact">
+        <i class="fab fa-whatsapp"></i> Escríbenos por WhatsApp
+      </a>
+    </div>
+    <div style="margin-top: 1.5rem; text-align: center; font-size: 0.9rem; color: #999;">
+      <i class="fas fa-clock"></i> Respuesta rápida, siempre personal.
+    </div>
+  </div>
+</div>
+
+<script>
+  // Menú hamburguesa
+  const menuBtn = document.getElementById('menuToggle');
+  const nav = document.getElementById('navLinks');
+  if(menuBtn) {
+    menuBtn.addEventListener('click', () => nav.classList.toggle('active'));
+    document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => nav.classList.remove('active')));
+  }
+
+  // Tabs
+  const tabs = document.querySelectorAll('.tab-btn');
+  const panes = document.querySelectorAll('.tab-pane');
+
+  function activateTab(tabId) {
+    panes.forEach(pane => pane.classList.remove('active-pane'));
+    const activePane = document.getElementById(tabId);
+    if(activePane) activePane.classList.add('active-pane');
+    tabs.forEach(btn => {
+      btn.classList.remove('active');
+      if(btn.getAttribute('data-tab') === tabId) btn.classList.add('active');
+    });
+  }
+
+  tabs.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tabId = btn.getAttribute('data-tab');
+      if(tabId) activateTab(tabId);
+    });
+  });
+
+  // Header scroll
+  window.addEventListener('scroll', () => {
+    const header = document.querySelector('header');
+    if(window.scrollY > 20) header.style.background = 'rgba(255,255,255,0.98)';
+    else header.style.background = 'rgba(255,255,255,0.96)';
+  });
+
+  // MODAL
+  const modal = document.getElementById('contactModal');
+  const closeBtn = document.getElementById('closeModal');
+  const openBtns = document.querySelectorAll('.open-modal');
+
+  function openModal() {
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  openBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal();
+    });
+  });
+
+  closeBtn.addEventListener('click', closeModal);
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
+</script>
+</body>
+</html>
