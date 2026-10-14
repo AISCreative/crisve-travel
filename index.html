@@ -70,6 +70,9 @@ header, main, footer, .floating-buttons, .modal-overlay{
     .categoria-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
     .travel-card { background: #ffffff; border: 1px solid #ece7e0; transition: 0.25s; overflow: hidden; }
     .travel-card:hover { border-color: #d37e2c; transform: translateY(-5px); box-shadow: 0 12px 20px -12px rgba(0,0,0,0.08); }
+    /* Disney: evita que la única tarjeta se expanda a todo el ancho */
+    #disney .travel-card { width: 100%; max-width: 390px; }
+    #disney .card-img { background-size: cover; background-position: center center; }
     .card-img { height: 200px; background-size: cover; background-position: center; background-repeat: no-repeat; }
     .card-content { padding: 1.4rem; }
     .card-content h3 { font-size: 1.3rem; margin-bottom: 0.3rem; }
